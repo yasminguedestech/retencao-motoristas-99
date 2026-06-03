@@ -1,6 +1,6 @@
 # 🚖 Análise de Retenção de Motoristas — Contexto 99
 
-Projeto de análise exploratória de dados com foco em **retenção de motoristas parceiros** em plataformas de ride hailing.
+Projeto de análise de dados com foco em **retenção de motoristas parceiros** em plataformas de ride hailing.
 
 -----
 
