@@ -74,14 +74,22 @@ Os dados utilizados são **simulados** com base no contexto real do mercado de r
 └── fig3_correlacao.png            # Heatmap de correlação entre variáveis
 ```
 
- ## 🛠️ Tecnologias utilizadas
 
-- Python 3
-- pandas
-- matplotlib
-- seaborn
-- numpy
-- Jupyter Notebook
+## 🛠️ Ferramentas Utilizadas
+
+| Categoria | Ferramenta | Uso |
+|-----------|-----------|-----|
+| Linguagem | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) | Desenvolvimento completo |
+| Dados | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white) | Manipulação e análise |
+| Numérico | ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white) | Cálculos estatísticos |
+| Visualização | ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=flat&logo=python&logoColor=white) | Gráficos e painéis |
+| Visualização | ![Seaborn](https://img.shields.io/badge/Seaborn-4C72B0?style=flat&logo=python&logoColor=white) | Heatmap e distribuições |
+| Ambiente | ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white) | Notebook interativo |
+| Versionamento | ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) | Controle de versão |
+| Repositório | ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white) | Hospedagem do projeto |
+
+---
+
 
 
 ## 👩‍💻 Sobre
