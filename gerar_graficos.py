@@ -9,11 +9,11 @@ from matplotlib.colors import LinearSegmentedColormap
 import warnings
 warnings.filterwarnings("ignore")
 
-BG      = "#0D0D0D"
-CARD    = "#1A1A1A"
-BORDER  = "#2A2A2A"
-TEXT    = "#F5F5F5"
-MUTED   = "#888888"
+BG      = "#FFFFFF"
+CARD    = "#FFFFFF"
+BORDER  = "#E5E5E5"
+TEXT    = "#1A1A1A"
+MUTED   = "#666666"
 
 # Paleta 99 — tons de amarelo
 Y1 = "#FFD600"   # amarelo vivo  → Ativo / destaque
@@ -86,7 +86,7 @@ df["motivo_saida"] = df["motivo_saida"].fillna("—")
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 fig.patch.set_facecolor(BG)
 fig.suptitle("Análise de Retenção de Motoristas — 99",
-             fontsize=18, fontweight="bold", color=Y1, y=1.01)
+             fontsize=18, fontweight="bold", color=Y4, y=1.01)
 
 # 1a. Rosca — distribuição de status
 ax = axes[0,0]; ax.set_facecolor(CARD)
@@ -96,7 +96,7 @@ wedges, _, autotexts = ax.pie(
     colors=CORES_STATUS, startangle=90, pctdistance=0.75,
     wedgeprops=dict(edgecolor=BG, linewidth=3, width=0.55))
 for at in autotexts:
-    at.set_fontsize(13); at.set_fontweight("bold"); at.set_color(BG)
+    at.set_fontsize(13); at.set_fontweight("bold"); at.set_color("white")
 ax.legend(["Ativo","Inativo (Churn)"], loc="center", fontsize=10,
           facecolor=CARD, edgecolor=BORDER, labelcolor=TEXT)
 ax.text(0, 0, f"{df['churn'].sum()}\nchurn",
@@ -107,7 +107,7 @@ ax.set_title("Distribuição de Status", color=TEXT)
 ax = axes[0,1]; ax.set_facecolor(CARD)
 grupos = [df[df["churn"]==0]["avaliacao_media"], df[df["churn"]==1]["avaliacao_media"]]
 bp = ax.boxplot(grupos, patch_artist=True, widths=0.45,
-                medianprops=dict(color=BG, linewidth=2.5),
+                medianprops=dict(color="white", linewidth=2.5),
                 whiskerprops=dict(color=MUTED, linewidth=1.5),
                 capprops=dict(color=MUTED, linewidth=1.5),
                 flierprops=dict(marker="o", markerfacecolor=MUTED, markersize=4, alpha=0.5))
@@ -116,7 +116,7 @@ bp["boxes"][1].set_facecolor(Y3); bp["boxes"][1].set_edgecolor(Y4)
 ax.set_xticks([1,2]); ax.set_xticklabels(["Ativo","Inativo (Churn)"], color=TEXT)
 ax.set_ylabel("Avaliação Média")
 ax.set_title("Avaliação Média × Status", color=TEXT)
-ax.axhline(4.0, color=Y2, linewidth=1.8, linestyle="--", alpha=0.85, label="Limite 4.0")
+ax.axhline(4.0, color=Y4, linewidth=1.8, linestyle="--", alpha=0.85, label="Limite 4.0")
 ax.legend(fontsize=9)
 ax.spines["left"].set_color(BORDER); ax.spines["bottom"].set_color(BORDER)
 
@@ -128,7 +128,7 @@ vals = churn_cidade.values
 norm = (vals - vals.min()) / (vals.max() - vals.min() + 1e-9)
 cores_c = [plt.cm.YlOrBr(0.3 + 0.6*v) for v in norm]
 bars = ax.barh(churn_cidade.index, vals, color=cores_c, edgecolor="none", height=0.6)
-ax.axvline(media, color=Y1, linewidth=1.6, linestyle="--",
+ax.axvline(media, color=Y4, linewidth=1.6, linestyle="--",
            alpha=0.8, label=f"Média: {media:.1f}%")
 ax.set_xlabel("Taxa de Churn (%)")
 ax.set_title("Taxa de Churn por Cidade", color=TEXT)
@@ -145,7 +145,7 @@ ax.scatter(df[mask]["corridas_por_semana"],  df[mask]["ganho_medio_semanal_r$"],
            c=Y1, alpha=0.30, s=20, label="Ativo")
 ax.scatter(df[~mask]["corridas_por_semana"], df[~mask]["ganho_medio_semanal_r$"],
            c=Y3, alpha=0.40, s=20, label="Churn")
-ax.axhline(500, color=Y2, linewidth=1.5, linestyle="--", alpha=0.85, label="R$ 500/sem")
+ax.axhline(500, color=Y4, linewidth=1.5, linestyle="--", alpha=0.85, label="R$ 500/sem")
 ax.set_xlabel("Corridas por Semana"); ax.set_ylabel("Ganho Médio Semanal (R$)")
 ax.set_title("Corridas × Ganho por Status", color=TEXT)
 ax.legend(fontsize=9)
