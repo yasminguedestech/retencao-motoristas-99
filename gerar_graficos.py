@@ -10,21 +10,21 @@ from matplotlib.colors import LinearSegmentedColormap
 import warnings
 warnings.filterwarnings("ignore")
 
-# ── Paleta moderna — branco + amarelos claros ────────────────
+# ── Paleta 99 — amarelo + preto + branco ────────────────────
 BG      = "#FFFFFF"
 CARD    = "#FFFFFF"
-SUBTLE  = "#FEFCE8"   # amarelo quase branco — fill de área
-BORDER  = "#F0EFE9"   # borda muito sutil
-TEXT    = "#1C1917"   # quase preto
-MUTED   = "#78716C"   # cinza quente
+SUBTLE  = "#FFFBE6"   # amarelo quase branco — fill de área
+BORDER  = "#EDEDED"   # borda neutra
+TEXT    = "#111111"   # preto 99
+MUTED   = "#666666"   # cinza neutro
 
-Y_BRIGHT = "#FACC15"  # amarelo vivo — Ativo / destaque
-Y_MID    = "#EAB308"  # dourado — linha / referência
-Y_LIGHT  = "#FEF08A"  # amarelo claro — fill
-Y_DEEP   = "#CA8A04"  # âmbar escuro — Churn / contraste
-Y_WARM   = "#F59E0B"  # âmbar médio — gradiente
+Y_BRIGHT = "#FFD600"  # amarelo 99 — Ativo / destaque principal
+Y_MID    = "#F0C000"  # amarelo escurecido — linha / referência
+Y_LIGHT  = "#FFF3B0"  # amarelo muito claro — fill de área
+Y_DEEP   = "#1C1917"  # preto 99 — Churn / contraste forte
+Y_WARM   = "#F5A800"  # âmbar — gradiente intermediário
 
-CORES_STATUS = [Y_BRIGHT, Y_DEEP]   # Ativo, Churn
+CORES_STATUS = [Y_BRIGHT, Y_DEEP]   # Ativo (amarelo), Churn (preto)
 
 plt.rcParams.update({
     "figure.facecolor":  BG,
@@ -99,8 +99,8 @@ wedges, _, autotexts = ax.pie(
     contagem, labels=None, autopct="%1.1f%%",
     colors=CORES_STATUS, startangle=90, pctdistance=0.78,
     wedgeprops=dict(edgecolor=BG, linewidth=4, width=0.5))
-for at in autotexts:
-    at.set_fontsize(12); at.set_fontweight("bold"); at.set_color("white")
+for at, color in zip(autotexts, [TEXT, "#FFFFFF"]):
+    at.set_fontsize(12); at.set_fontweight("bold"); at.set_color(color)
 churn_n = df["churn"].sum()
 ativo_n = N - churn_n
 ax.text(0, 0.12, f"{ativo_n}", ha="center", va="center",
@@ -241,7 +241,7 @@ labels_pt = ["Churn","Avaliação","Ganho Sem.","Corridas/Sem.",
              "Cancelamentos","Tempo Plataf.","Suporte","Bônus"]
 
 mask = np.triu(np.ones_like(corr, dtype=bool))
-cmap_99 = LinearSegmentedColormap.from_list("99light", ["#FFFBEB", Y_LIGHT, Y_BRIGHT, Y_MID])
+cmap_99 = LinearSegmentedColormap.from_list("99brand", ["#FFFBE6", Y_LIGHT, Y_BRIGHT, Y_DEEP])
 
 sns.heatmap(corr, mask=mask, annot=True, fmt=".2f", cmap=cmap_99,
             vmin=-0.2, vmax=0.2,
